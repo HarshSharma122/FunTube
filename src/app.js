@@ -8,11 +8,22 @@ app.use(cors({
     credentials:true,
 }))
 
-// this is configiration for middlewares
 app.use(express.json({limit:"10kb"}));
-app.use(express.urlencoded({extended: true, limit:"10kb"}));
+app.use(express.urlencoded({extended: true, limit:"16kb"}));
 app.use(express.static("public"));
 app.use(cookieParser());
+
+
+
+// routes import
+import userRouter from './routes/user.routes.js';
+
+// routes decelartion
+app.use('/api/v1/users', userRouter);
+
+
+
+
 
 
 export { app };
